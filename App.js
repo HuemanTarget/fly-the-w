@@ -1,9 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Audio } from "expo-av";
 
 export default function App() {
+  const [flag, setFlag] = useState(require("./assets/w_flag.png"));
   // const audio = async () => {
   //   const soundObject = new Audio.Sound();
   //   try {
@@ -15,21 +16,21 @@ export default function App() {
   //   }
   // };
 
-  const handlePress = async() => {
-    const soundObject = new Audio.Sound();
-    try {
-      await soundObject.loadAsync(require("./assets/goodman.mp3"));
-      await soundObject.playAsync();
-      // Your sound is playing!
-    } catch (error) {
-      // An error occurred!
-    }
+  const handlePress = async () => {
+    setFlag(require("./assets/w_flag.gif"));
+    // const soundObject = new Audio.Sound();
+    // try {
+    //   await soundObject.loadAsync(require("./assets/goodman.mp3"));
+    //   await soundObject.playAsync();
+    //   // Your sound is playing!
+    // } catch (error) {
+    //   // An error occurred!
+    // }
   };
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Image style={styles.flag} source={flag} />
       <TouchableOpacity
         onPress={() => handlePress()}
         style={{
@@ -38,6 +39,7 @@ export default function App() {
           backgroundColor: "#CC3433",
           borderRadius: 20,
           marginTop: 10,
+          marginBottom: 200,
           width: 200,
           height: 50,
           alignItems: "center",
@@ -68,5 +70,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#0E3386",
     alignItems: "center",
     justifyContent: "center",
+  },
+  flag: {
+    zIndex: 1000,
+    elevation: 1000,
+    width: 400,
+    height: 400,
+    marginLeft: 70,
+    marginTop: 0,
   },
 });
