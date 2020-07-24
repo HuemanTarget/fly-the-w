@@ -1,20 +1,45 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Audio } from "expo-av";
 
 export default function App() {
+  // const audio = async () => {
+  //   const soundObject = new Audio.Sound();
+  //   try {
+  //     await soundObject.loadAsync(require("./assets/goodman.mp3"));
+  //     await soundObject.playAsync();
+  //     // Your sound is playing!
+  //   } catch (error) {
+  //     // An error occurred!
+  //   }
+  // };
+
+  const handlePress = async() => {
+    const soundObject = new Audio.Sound();
+    try {
+      await soundObject.loadAsync(require("./assets/goodman.mp3"));
+      await soundObject.playAsync();
+      // Your sound is playing!
+    } catch (error) {
+      // An error occurred!
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
       <TouchableOpacity
+        onPress={() => handlePress()}
         style={{
           borderWidth: 2,
           borderColor: "#CC3433",
           backgroundColor: "#CC3433",
+          borderRadius: 20,
           marginTop: 10,
           width: 200,
-          height: 40,
+          height: 50,
           alignItems: "center",
           justifyContent: "center",
           zIndex: 1000,
