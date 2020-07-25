@@ -1,12 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Audio } from "expo-av";
-import { Wave } from 'react-animated-text';
+import Facebook from "./components/Facebook";
 
 export default function App() {
   const [flag, setFlag] = useState(require("./assets/w_flag.png"));
-  const [textValue, setTextValue] = useState("");
+  const [textValueOne, setTextValueOne] = useState("");
+  const [textValueTwo, setTextValueTwo] = useState("");
+  const [textValueThree, setTextValueThree] = useState("");
+  const [facebook, setFacebook] = useState(null);
 
   const soundObject = new Audio.Sound();
 
@@ -22,7 +24,10 @@ export default function App() {
 
   const handlePress = async () => {
     setFlag(require("./assets/w_flag.gif"));
-    setTextValue("GO CUBS GO!");
+    setTextValueOne("GO ");
+    setTextValueTwo("CUBS ");
+    setTextValueThree("GO!");
+    setFacebook(<Facebook />);
     try {
       const { sound: soundObject, status } = await Audio.Sound.createAsync(
         require("./assets/goodman.mp3"),
@@ -39,25 +44,47 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Image style={styles.flag} source={flag} />
-      <Text
-        style={{
-          fontSize: 50,
-          color: "#CC3433",
-          fontWeight: "bold",
-          marginBottom: 25,
-          
-        }}
-      >
-        {textValue}
-      </Text>
+      <View style={{ flexDirection: "row" }}>
+        <Text
+          style={{
+            fontSize: 45,
+            color: "#CC3433",
+            fontWeight: "bold",
+            marginBottom: 25,
+          }}
+        >
+          {textValueOne}
+        </Text>
+        <Text
+          style={{
+            fontSize: 45,
+            color: "white",
+            fontWeight: "bold",
+            marginBottom: 25,
+          }}
+        >
+          {textValueTwo}
+        </Text>
+        <Text
+          style={{
+            fontSize: 45,
+            color: "#CC3433",
+            fontWeight: "bold",
+            marginBottom: 25,
+          }}
+        >
+          {textValueThree}
+        </Text>
+      </View>
+
       <TouchableOpacity
         onPress={() => handlePress()}
         style={{
           borderWidth: 2,
-          borderColor: "#CC3433",
+          borderColor: "white",
           backgroundColor: "#CC3433",
           borderRadius: 20,
-          marginBottom: 200,
+          marginBottom: 20,
           width: 200,
           height: 50,
           alignItems: "center",
@@ -78,6 +105,7 @@ export default function App() {
           Fly The W
         </Text>
       </TouchableOpacity>
+      {facebook}
     </View>
   );
 }
