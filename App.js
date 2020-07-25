@@ -2,9 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Audio } from "expo-av";
+import { Wave } from 'react-animated-text';
 
 export default function App() {
   const [flag, setFlag] = useState(require("./assets/w_flag.png"));
+  const [textValue, setTextValue] = useState("");
 
   const soundObject = new Audio.Sound();
 
@@ -20,7 +22,7 @@ export default function App() {
 
   const handlePress = async () => {
     setFlag(require("./assets/w_flag.gif"));
-
+    setTextValue("GO CUBS GO!");
     try {
       const { sound: soundObject, status } = await Audio.Sound.createAsync(
         require("./assets/goodman.mp3"),
@@ -37,6 +39,17 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Image style={styles.flag} source={flag} />
+      <Text
+        style={{
+          fontSize: 50,
+          color: "#CC3433",
+          fontWeight: "bold",
+          marginBottom: 25,
+          
+        }}
+      >
+        {textValue}
+      </Text>
       <TouchableOpacity
         onPress={() => handlePress()}
         style={{
@@ -80,7 +93,7 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     elevation: 1000,
     width: 400,
-    height: 400,
+    height: 250,
     marginLeft: 90,
   },
 });
