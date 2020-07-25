@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Audio } from "expo-av";
 import Facebook from "./components/Facebook";
+import Fireworks from "react-native-fireworks";
 
 export default function App() {
   const [flag, setFlag] = useState(require("./assets/w_flag.png"));
@@ -9,6 +10,7 @@ export default function App() {
   const [textValueTwo, setTextValueTwo] = useState("");
   const [textValueThree, setTextValueThree] = useState("");
   const [facebook, setFacebook] = useState(null);
+  const [fireworks, setFireworks] = useState(null);
 
   const soundObject = new Audio.Sound();
 
@@ -28,6 +30,8 @@ export default function App() {
     setTextValueTwo("CUBS ");
     setTextValueThree("GO!");
     setFacebook(<Facebook />);
+    setFireworks(<Fireworks />);
+
     try {
       const { sound: soundObject, status } = await Audio.Sound.createAsync(
         require("./assets/goodman.mp3"),
@@ -76,7 +80,7 @@ export default function App() {
           {textValueThree}
         </Text>
       </View>
-
+      {fireworks}
       <TouchableOpacity
         onPress={() => handlePress()}
         style={{
