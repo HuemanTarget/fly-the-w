@@ -1,12 +1,15 @@
 {
   "expo": {
-    "name": "fly-the-w",
+    "name": "Fly The W",
+    "description": "Cubs Win! Fly The W!",
     "slug": "fly-the-w",
-    "version": "1.0.0",
+    "privacy": "public",
+    "platforms": ["ios", "android"],
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash.json",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,10 +20,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pompouscatstudios.flythew"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "android": {
+      "package": "com.backlog.backlog"
     }
   }
 }

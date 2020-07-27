@@ -8,7 +8,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const soundObject = new Audio.Sound();
 
 export default function App() {
-  const [flag, setFlag] = useState(null);
+  const [flag, setFlag] = useState(require("./assets/w_flag.png"));
   const [textValueOne, setTextValueOne] = useState("");
   const [textValueTwo, setTextValueTwo] = useState("");
   const [textValueThree, setTextValueThree] = useState("");
